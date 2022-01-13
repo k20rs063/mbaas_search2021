@@ -32,31 +32,31 @@
         })
     }
 
-    function searchwriter() {
-      let level = parseInt($("#writer").val());
+    function searchprice() {
+      let level = parseInt($("#price").val());
       let TestDataClass = ncmb.DataStore(db);
-      TestDataClass.equalTo("writer",writer).fetchAll()
+      TestDataClass.equalTo("price",price).fetchAll()
       .then(function(results) {
         showResults(results);
         })
     }
 
-    function searchLevelLT(){
-      let level = parseInt($("#level").val());
+    function searchpriceLT(){
+      let price = parseInt($("#price").val());
       let TestDataClass = ncmb.DatStore(db);
       TestDataClass
-      .lessThan("level", level)
+      .lessThan("price", price)
       .fetchAll()
       .then(function(results){
         showResults(results);
       })
     }
 
-    function searchLevelGT(){
-      let level = parseInt($("#level").val(), 10);
+    function searchpriceGT(){
+      let price = parseInt($("#price").val(), 10);
       let TestDataClass = ncmb.DatStore(db);
       TestDataClass
-      .greaterThan("level", level)
+      .greaterThan("price", price)
       .fetchAll()
       .then(function(results){
         showResults(results);
@@ -87,16 +87,18 @@
   <h1>mBaaS search</h1>
   <div>
     <label for="name">name:</label>
-    <input id="name" type="text" placeholder="monster name">
+    <input id="name" type="text" placeholder="comic name">
   </div>
   <div>
-    <label for="writer">writer:</label>
-    <input id="writer" type="number" placeholder="monster writer">
+    <label for="price">price:</label>
+    <input id="price" type="number" placeholder="comic price">
   </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">Fetch All</button>
     <button class="btn" onclick="searchName()">Name</button>
-    <button class="btn" onclick="searchwriter()">Writer</button>
+    <br>
+    <button class="btn" onclick="searchpriceLT()">price &lt</button>
+    <button class="btn" onclick="searchpriceGT()">price &gt</button>
   </div>
   <div id="message">message area</div>
 </body>
