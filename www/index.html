@@ -32,38 +32,25 @@
         })
     }
 
-    function searchprice() {
-      let level = parseInt($("#price").val());
+    function searchPriceLT() {
+      let price = parseInt($("#price").val());
       let TestDataClass = ncmb.DataStore(db);
-      TestDataClass.equalTo("price",price).fetchAll()
+      TestDataClass
+      .lessThanOrEqualTo("price",price).fetchAll()
       .then(function(results) {
         showResults(results);
         })
     }
 
-    function searchpriceLT(){
+    function searchPriceGT() {
       let price = parseInt($("#price").val());
-      let TestDataClass = ncmb.DatStore(db);
+      let TestDataClass = ncmb.DataStore(db);
       TestDataClass
-      .lessThan("price", price)
-      .fetchAll()
-      .then(function(results){
+      .greaterThanOrEqualTo("price",price).fetchAll()
+      .then(function(results) {
         showResults(results);
-      })
+        })
     }
-
-    function searchpriceGT(){
-      let price = parseInt($("#price").val(), 10);
-      let TestDataClass = ncmb.DatStore(db);
-      TestDataClass
-      .greaterThan("price", price)
-      .fetchAll()
-      .then(function(results){
-        showResults(results);
-      })
-    }
-
-
 
     function showResults(results) {
       // テーブルのヘッダを生成
@@ -97,8 +84,8 @@
     <button class="btn" onclick="fetchAll()">Fetch All</button>
     <button class="btn" onclick="searchName()">Name</button>
     <br>
-    <button class="btn" onclick="searchpriceLT()">price &lt</button>
-    <button class="btn" onclick="searchpriceGT()">price &gt</button>
+    <button class="btn" onclick="searchPriceLT()">price &lt</button>
+    <button class="btn" onclick="searchPriceGT()">price &gt</button>
   </div>
   <div id="message">message area</div>
 </body>
